@@ -1,8 +1,6 @@
 ﻿namespace SnapToTable.Domain.Entities;
 
 public record Recipe(
-    DateTime CreatedAt,
-    Guid Id,
     Guid RecipeAnalysisRequestId,
     string Title,
     string Description,
@@ -10,4 +8,4 @@ public record Recipe(
     string Instructions,
     int PrepTimeMinutes,
     int CookTimeMinutes
-);
+) : BaseEntity;
