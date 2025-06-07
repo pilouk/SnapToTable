@@ -33,7 +33,7 @@ public class BaseRepository<T> : IRepository<T> where T : BaseEntity
     public virtual async Task AddAsync(T entity)
     {
         entity.CreatedAt = DateTime.UtcNow;
-        entity.Id = Guid.NewGuid();
+        entity.Id = Guid.CreateVersion7();
         await _collection.InsertOneAsync(entity);
     }
 
