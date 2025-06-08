@@ -4,11 +4,14 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>c174fc63-73f9-4d21-9f07-2af0a49f982a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.5" />
-    <ProjectReference Include="../SnapToTable.Application/SnapToTable.Application.csproj"/>
+    <PackageReference Include="Scalar.AspNetCore" Version="2.4.13" />
+    <ProjectReference Include="..\SnapToTable.Application\SnapToTable.Application.csproj"/>
+    <ProjectReference Include="..\SnapToTable.Infrastructure\SnapToTable.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

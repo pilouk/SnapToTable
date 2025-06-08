@@ -1,17 +1,21 @@
-var builder = WebApplication.CreateBuilder(args);
+using Scalar.AspNetCore;
+using SnapToTable.Application.Features.RecipeAnalysisRequest.CreateRecipeAnalysisRequest;
+using SnapToTable.Infrastructure;
 
-// Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateRecipeAnalysisRequestCommand>());
+builder.Services.AddInfrastructure(configuration);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference();
 }
 
 app.UseAuthorization();

@@ -10,7 +10,7 @@ namespace SnapToTable.Infrastructure;
 
 public static class ServiceRegistration
 {
-    public static IServiceCollection AddMongoDbInfrastructure(
+    public static IServiceCollection AddInfrastructure(
         this IServiceCollection services,
         IConfiguration configuration)
     {

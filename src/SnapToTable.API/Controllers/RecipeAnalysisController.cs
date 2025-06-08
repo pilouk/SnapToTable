@@ -13,6 +13,7 @@ public class RecipeAnalysisController : ApiBaseController
     }
 
     [HttpPost]
+    [Consumes("multipart/form-data")]
     public async Task<IActionResult> CreateAnalysis([FromForm] CreateRecipeAnalysisRequest request)
     {
         // Map from the API model to the clean Application command
@@ -20,7 +21,6 @@ public class RecipeAnalysisController : ApiBaseController
             request.Name,
             request.Images.Select(img => new ImageInput(
                 img.OpenReadStream(),
-                img.FileName,
                 img.ContentType
             )).ToList()
         );
