@@ -14,6 +14,8 @@ public class CreateRecipeAnalysisRequestCommandHandler : IRequestHandler<CreateR
 
     public async Task<Guid> Handle(CreateRecipeAnalysisRequestCommand request, CancellationToken cancellationToken)
     {
-        return await Task.FromResult(Guid.CreateVersion7());
+        var newAnalysis = new Domain.Entities.RecipeAnalysisRequest(request.Name, ["test"]);
+        await _repository.AddAsync(newAnalysis);
+        return newAnalysis.Id;
     }
 }
